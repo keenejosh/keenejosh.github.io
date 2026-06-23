@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joshua Keene, PhD | Neuroscience Researcher</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --navy:       #0d1b2a;
+      --navy-mid:   #132337;
+      --navy-light: #1e3a5f;
+      --accent:     #4a9eca;
+      --accent-dim: #2d6a8f;
+      --text:       #f0f4f8;
+      --text-muted: #b8cfe0;
+      --divider:    #1e3a5f;
+      --card-bg:    #132337;
+      --white:      #ffffff;
+      --font-display: 'Lora', 'Georgia', serif;
+      --font-body:    'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13, 27, 42, 0.97);
+      border-bottom: 1px solid var(--divider);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--white);
+      letter-spacing: 0.03em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      padding: 5rem 2rem 4rem;
+      background: linear-gradient(160deg, var(--navy) 55%, var(--navy-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(74,158,202,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      gap: 3.5rem;
+      align-items: center;
+    }
+    .hero-photo {
+      flex-shrink: 0;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid var(--accent-dim);
+      overflow: hidden;
+      background: var(--navy-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-photo-placeholder {
+      font-size: 2.8rem;
+      color: var(--text-muted);
+      user-select: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: normal;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--text);
+      max-width: 580px;
+      margin-bottom: 1.6rem;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 2.4rem;
+      margin-bottom: 0;
+      flex-wrap: wrap;
+    }
+    .stat-item { text-align: left; }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 0.2rem;
+    }
+
+    /* ── SECTION SHELL ── */
+    section {
+      padding: 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.65rem;
+      font-weight: normal;
+      color: var(--white);
+      margin-bottom: 1.8rem;
+      padding-bottom: 0.8rem;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    /* ── KEY FINDINGS ── */
+    .findings-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin: 1rem 0 0.5rem;
+      font-weight: 600;
+    }
+    .findings-list {
+      padding-left: 1rem;
+      margin: 0;
+    }
+    .findings-list li {
+      font-size: 0.82rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.55;
+    }
+    .figure-row {
+      display: flex;
+      gap: 0.8rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+    .figure-link {
+      display: block;
+      flex: 1;
+      min-width: 140px;
+      text-decoration: none;
+    }
+    .figure-link:hover img {
+      border-color: var(--accent-dim);
+      opacity: 0.9;
+    }
+    .figure-link:hover { text-decoration: none; }
+    .study-figure {
+      flex: 1;
+      min-width: 140px;
+      margin: 0;
+    }
+    .study-figure img {
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid var(--divider);
+    }
+    .study-figure figcaption {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+      line-height: 1.4;
+    }
+
+    /* ── RESEARCH CARDS ── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+    @media (max-width: 640px) { .research-grid { grid-template-columns: 1fr; } }
+    .research-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1.5rem;
+    }
+    .research-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.6rem;
+      font-weight: normal;
+    }
+    .research-card p {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+    .research-card .links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .research-card .links a {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border: 1px solid var(--divider);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .research-card .links a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      text-decoration: none;
+    }
+
+    /* ── GALLERY ── */
+    .gallery-intro {
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 1.6rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .gallery-pair {
+      grid-column: 1 / -1;
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    .gallery-pair:hover { border-color: var(--accent-dim); }
+
+    .pair-panels {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 0;
+    }
+    @media (max-width: 560px) {
+      .pair-panels { grid-template-columns: 1fr; }
+    }
+
+    .pair-panel {
+      display: block;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+    .pair-panel:first-child {
+      border-right: 1px solid var(--divider);
+    }
+    @media (max-width: 560px) {
+      .pair-panel:first-child {
+        border-right: none;
+        border-bottom: 1px solid var(--divider);
+      }
+    }
+
+    .pair-panel img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .pair-panel:hover img { opacity: 0.88; }
+
+    .pair-panel-label {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(13,27,42,0.82);
+      color: var(--text-muted);
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      pointer-events: none;
+    }
+
+    .pair-caption {
+      padding: 0.55rem 0.8rem 0.65rem;
+      border-top: 1px solid var(--divider);
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .pair-caption-main {
+      font-size: 0.78rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .pair-caption-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .gallery-solo {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+      display: block;
+      text-decoration: none;
+    }
+    .gallery-solo:hover { border-color: var(--accent-dim); text-decoration: none; }
+    .gallery-solo img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.2s;
+    }
+    .gallery-solo:hover img { opacity: 0.88; }
+    .gallery-solo-caption {
+      padding: 0.5rem 0.7rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .gallery-solo-caption strong {
+      display: block;
+      color: var(--text);
+      font-size: 0.78rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      height: 160px;
+      background: var(--navy-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ── POSTER GRID ── */
+    .poster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .poster-item {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 3px;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: border-color 0.2s;
+    }
+    .poster-item:hover { border-color: var(--accent-dim); text-decoration: none; }
+    .poster-item img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .poster-caption {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .poster-caption strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+      font-size: 0.8rem;
+    }
+    .poster-caption .poster-venue {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+    .poster-caption .poster-desc {
+      display: block;
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-list { list-style: none; }
+    .pub-list li {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--divider);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .pub-list li:last-child { border-bottom: none; }
+    .pub-list .pub-title {
+      color: var(--white);
+      font-style: italic;
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+    .pub-list .pub-meta {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .pub-list .pub-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+    .badge-prep { background: rgba(74,158,202,0.15); color: var(--accent); }
+    .badge-published { background: rgba(74,202,120,0.15); color: #4aca78; }
+    .pub-link {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border: 1px solid var(--divider);
+      padding: 0.25rem 0.7rem;
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .pub-link:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      text-decoration: none;
+    }
+
+    /* ── CV / RESUME ── */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 480px) { .doc-grid { grid-template-columns: 1fr; } }
+    .doc-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .doc-card h3 {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 600;
+    }
+    .doc-card p { font-size: 0.82rem; color: var(--text); }
+    .doc-card a {
+      margin-top: auto;
+      display: inline-block;
+      font-size: 0.8rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid var(--accent-dim);
+      border-radius: 2px;
+      color: var(--accent);
+      align-self: flex-start;
+      transition: background 0.2s, color 0.2s;
+    }
+    .doc-card a:hover {
+      background: var(--accent);
+      color: var(--navy);
+      text-decoration: none;
+    }
+
+    /* ── AWARDS ── */
+    .award-list { list-style: none; }
+    .award-list li {
+      display: flex;
+      gap: 1.2rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--divider);
+      font-size: 0.88rem;
+    }
+    .award-list li:last-child { border-bottom: none; }
+    .award-year {
+      flex-shrink: 0;
+      width: 3rem;
+      color: var(--accent);
+      font-size: 0.78rem;
+      padding-top: 0.1rem;
+    }
+    .award-detail { color: var(--text); }
+    .award-detail strong { color: var(--white); display: block; }
+
+    /* ── TEACHING ── */
+    .teaching-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    @media (max-width: 480px) { .teaching-grid { grid-template-columns: 1fr; } }
+    .teaching-card {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1.3rem;
+    }
+    .teaching-card h3 {
+      font-size: 0.92rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .teaching-card p { font-size: 0.8rem; color: var(--text); margin-bottom: 0.7rem; }
+    .teaching-card .doc-links { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .teaching-card .doc-links a {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      border: 1px solid var(--divider);
+      padding: 0.2rem 0.6rem;
+      border-radius: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .teaching-card .doc-links a:hover {
+      color: var(--accent);
+      border-color: var(--accent-dim);
+      text-decoration: none;
+    }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .contact-item {
+      background: var(--card-bg);
+      border: 1px solid var(--divider);
+      border-radius: 4px;
+      padding: 1.1rem 1.3rem;
+    }
+    .contact-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 0.3rem;
+    }
+    .contact-value {
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .contact-value a { color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-top: 1px solid var(--divider);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      border: none;
+      border-top: 1px solid var(--divider);
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Joshua Keene, PhD</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#posters">Posters</a></li>
+    <li><a href="#cv">CV &amp; Documents</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO / ABOUT -->
+<div class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-photo">
+      <!-- Replace with: <img src="photo.jpg" alt="Joshua Keene" /> -->
+      <span class="hero-photo-placeholder">JK</span>
+    </div>
+    <div class="hero-text">
+      <p class="hero-eyebrow">Neuroscience · Neuroinflammation · Aging</p>
+      <h1 class="hero-name">Joshua Keene, PhD</h1>
+      <p class="hero-tagline">
+        Preclinical neuroscientist specializing in the relationship between peripheral immune activation,
+        tau pathology, and neuroinflammation. PhD from Central Michigan University; collaborative
+        doctoral research conducted at MSU-GRRC with Dr. David Morgan.
+        First-author manuscript in final preparation.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">5.4×</div>
+          <div class="stat-label">Hippocampal p-tau vs. vehicle controls<br/>at 30 days post-PAMP challenge (PS19)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">52%</div>
+          <div class="stat-label">Reduction in hippocampal amyloid burden<br/>following prenatal inflammatory stress (5xFAD)</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">150+</div>
+          <div class="stat-label">Animals across doctoral pipeline<br/>PS19 and 3xTg cohorts</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">30+</div>
+          <div class="stat-label">Undergraduate and medical students<br/>trained and mentored</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider" />
+
+<!-- RESEARCH -->
+<section id="research">
+  <p class="section-label">Doctoral &amp; Master's Work</p>
+  <h2 class="section-title">Research</h2>
+  <div class="research-grid">
+
+    <div class="research-card">
+      <h3>Doctoral Research · PAMP-Induced Tau Pathology &amp; Neuroinflammation</h3>
+      <p>
+        PS19 tauopathy mice received four PAMPs targeting TLR2/3/4/9 pathways monthly
+        over four months. Tissue was collected 30 days after the final challenge to assess
+        long-lasting rather than acute inflammatory effects. Primary researcher
+        across CMU and MSU-GRRC in collaboration with Dr. David Morgan.
+        First-author manuscript currently in final preparation for submission.
+      </p>
+      <h4 class="findings-label">Primary Finding</h4>
+      <ul class="findings-list">
+        <li>Repeated peripheral immune challenges drove a 5.4-fold hippocampal p-tau (AT8) elevation in PS19 mice at 30 days post-challenge, with total tau (HT7) remaining unaltered, confirming post-translational hyperphosphorylation rather than increased transgene expression</li>
+      </ul>
+      <h4 class="findings-label">Supporting Finding</h4>
+      <ul class="findings-list">
+        <li>Significant genotype × treatment interaction for MHC II and strong positive Spearman correlations between hippocampal p-tau and glial reactivity markers (MHC II: r=0.523, GFAP: r=0.556, CD68: r=0.501), suggesting tau pathology and peripheral immune activation converge to amplify neuroinflammatory responses</li>
+      </ul>
+      <div class="figure-row">
+        <a class="figure-link" href="figures/doctoral_AT8_figure.png" target="_blank">
+          <figure class="study-figure">
+            <img src="figures/doctoral_AT8_figure.png" alt="AT8 p-tau hippocampus PAMP vs vehicle PS19 mice with dot plot and high magnification insets" />
+            <figcaption>AT8 p-tau · PS19 hippocampus · (A) PAMP-treated, (B) vehicle · (C,D) high-magnification insets · (E) quantification</figcaption>
+          </figure>
+        </a>
+        <a class="figure-link" href="figures/doctoral_correlation_heatmap.png" target="_blank">
+          <figure class="study-figure">
+            <img src="figures/doctoral_correlation_heatmap.png" alt="Spearman correlation matrix AT8 vs glial markers PS19 PAMP group hippocampus" />
+            <figcaption>Spearman correlations · hippocampus · PS19 PAMP group · AT8, HT7, GFAP, MHC II, CD68</figcaption>
+          </figure>
+        </a>
+      </div>
+      <div class="links">
+        <a href="dissertation.pdf" target="_blank">Dissertation (PDF)</a>
+      </div>
+    </div>
+
+    <div class="research-card">
+      <h3>Master's Thesis · Prenatal Inflammatory Stress &amp; Amyloid Burden</h3>
+      <p>
+        5xFAD transgenic mice born from transgenic or wild-type mothers were used to
+        examine the effect of prenatal inflammatory exposure on hippocampal amyloid
+        plaque burden and microglial density. Effect of maternal genotype analyzed
+        within each sex. Master's thesis research, CMU.
+      </p>
+      <h4 class="findings-label">Primary Finding</h4>
+      <ul class="findings-list">
+        <li>Prenatal inflammatory stress paradoxically reduced hippocampal amyloid burden by ~52% in 5xFAD offspring of transgenic mothers, with the effect reaching significance independently in both male (46%, P=.026) and female (59%, P=.015) offspring</li>
+      </ul>
+      <h4 class="findings-label">Supporting Finding</h4>
+      <ul class="findings-list">
+        <li>Microglial density was not significantly altered by maternal genotype in either brain region or sex, suggesting the plaque reduction reflects altered amyloid processing rather than increased microglial clearance; females exhibited greater overall hippocampal amyloid burden than males independent of maternal genotype (F=8.4, P=.011)</li>
+      </ul>
+      <div class="figure-row">
+        <a class="figure-link" href="figures/thesis_graph.png" target="_blank">
+          <figure class="study-figure">
+            <img src="figures/thesis_graph.png" alt="Hippocampal plaque area by maternal genotype males and females 5xFAD" />
+            <figcaption>Hippocampal plaque area · TG vs. WT mothers · males and females · 5xFAD</figcaption>
+          </figure>
+        </a>
+        <a class="figure-link" href="figures/thesis_ihc.png" target="_blank">
+          <figure class="study-figure">
+            <img src="figures/thesis_ihc.png" alt="6E10 amyloid Iba1 microglia co-stain female 5xFAD hippocampus WT vs TG mother panels A through F" />
+            <figcaption>Female 5xFAD hippocampus · (A–C) WT mother offspring, (D–F) TG mother offspring · Iba1 green, 6E10 red, merge</figcaption>
+          </figure>
+        </a>
+      </div>
+      <div class="links">
+        <a href="masters_thesis.pdf" target="_blank">Master's Thesis (PDF)</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- IHC GALLERY -->
+<section id="gallery">
+  <p class="section-label">Microscopy &amp; Histology</p>
+  <h2 class="section-title">IHC Gallery</h2>
+  <p class="gallery-intro">
+    Representative immunohistochemistry and microscopy images spanning PS19 tauopathy,
+    5xFAD amyloid, TAg-OFF NCCR, and primary cell culture studies. Acquired using
+    ZEISS Axio Scan.Z1, ZEISS Axio Imager M1, and Nikon A1R confocal microscope.
+    Click any image to view full size.
+  </p>
+
+  <div class="gallery-grid">
+
+    <!-- AT8 PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/AT8_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/AT8_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="AT8 phospho-tau PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/AT8_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/AT8_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="AT8 phospho-tau PS19 hippocampus high-magnification inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">AT8 p-tau · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- MHC II PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/MHCII_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/MHCII_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="MHC II microglial antigen presentation PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/MHCII_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/MHCII_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="MHC II microglial antigen presentation PS19 hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">MHC II · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- GFAP PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/GFAP_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/GFAP_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="GFAP astrocyte reactivity PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/GFAP_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/GFAP_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="GFAP astrocyte reactivity PS19 hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">GFAP · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- HT7 PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/HT7_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/HT7_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="HT7 total human tau PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/HT7_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/HT7_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="HT7 total human tau PS19 hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">HT7 total tau · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- CD68 PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/CD68_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/CD68_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="CD68 microglial phagocytosis PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/CD68_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/CD68_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="CD68 microglial phagocytosis PS19 hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">CD68 phagocytic microglia · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- Iba1 PS19 Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/Iba1_PS19_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/Iba1_PS19_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="Iba1 microglial marker PS19 hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/Iba1_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/Iba1_PS19_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="Iba1 microglial marker PS19 hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Iba1 microglia · PS19 hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- Iba1 / 6E10 5xFAD Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/Iba1_6E10_5xFAD_Hippocampus_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/Iba1_6E10_5xFAD_Hippocampus_Coronal_20x_IF.webp"
+               alt="Iba1 and 6E10 amyloid 5xFAD hippocampus coronal 20x immunofluorescence" />
+        </a>
+        <a class="pair-panel" href="gallery/Iba1_6E10_5xFAD_Hippocampus_Inset_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/Iba1_6E10_5xFAD_Hippocampus_Inset_Coronal_20x_IF.webp"
+               alt="Iba1 and 6E10 amyloid 5xFAD hippocampus inset coronal 20x immunofluorescence" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Iba1 / 6E10 amyloid · 5xFAD hippocampus</span>
+        <span class="pair-caption-sub">coronal · 20x · IF · Nikon A1R confocal</span>
+      </div>
+    </div>
+
+    <!-- Congo Red APP Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/CongoRed_APP_Hippocampus_Horizontal_20x.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/CongoRed_APP_Hippocampus_Horizontal_20x.webp"
+               alt="Congo Red amyloid staining APP hippocampus horizontal 20x" />
+        </a>
+        <a class="pair-panel" href="gallery/CongoRed_APP_Hippocampus_Inset_Horizontal_20x.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/CongoRed_APP_Hippocampus_Inset_Horizontal_20x.webp"
+               alt="Congo Red amyloid staining APP hippocampus inset horizontal 20x" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Congo Red · APP hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- H31L21 APP Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/H31L21_APP_Hippocampus_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/H31L21_APP_Hippocampus_Horizontal_20x_DAB.webp"
+               alt="H31L21 amyloid validation staining APP hippocampus horizontal 20x DAB" />
+        </a>
+        <a class="pair-panel" href="gallery/H31L21_APP_Hippocampus_Inset_Horizontal_20x_DAB.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/H31L21_APP_Hippocampus_Inset_Horizontal_20x_DAB.webp"
+               alt="H31L21 amyloid validation staining APP hippocampus inset horizontal 20x DAB" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">H31L21 amyloid · APP hippocampus</span>
+        <span class="pair-caption-sub">horizontal · 20x · DAB · ZEISS Axio Scan.Z1</span>
+      </div>
+    </div>
+
+    <!-- TAg-OFF NCCR Iba1/CD45/Hoechst Hippocampus -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/Iba1_CD45_Hoechst_TAgOFF_NCCR_Hippocampus_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/Iba1_CD45_Hoechst_TAgOFF_NCCR_Hippocampus_Coronal_20x_IF.webp"
+               alt="Iba1 CD45 Hoechst TAg-OFF NCCR hippocampus coronal 20x immunofluorescence" />
+        </a>
+        <a class="pair-panel" href="gallery/Iba1_CD45_Hoechst_TAgOFF_NCCR_Hippocampus_Inset_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/Iba1_CD45_Hoechst_TAgOFF_NCCR_Hippocampus_Inset_Coronal_20x_IF.webp"
+               alt="Iba1 CD45 Hoechst TAg-OFF NCCR hippocampus inset coronal 20x immunofluorescence" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Iba1 / CD45 / Hoechst · TAg-OFF NCCR hippocampus</span>
+        <span class="pair-caption-sub">coronal · 20x · IF · ZEISS Axio Imager M1</span>
+      </div>
+    </div>
+
+    <!-- TAg-OFF Regular Diet Cortex (Iba1/Hoechst) -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/Iba1_Hoechst_TAgOFF_RegularDiet_Cortex_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/Iba1_Hoechst_TAgOFF_RegularDiet_Cortex_Coronal_20x_IF.webp"
+               alt="Iba1 Hoechst TAg-OFF regular diet cortex coronal 20x immunofluorescence" />
+        </a>
+        <a class="pair-panel" href="gallery/Iba1_Hoechst_TAgOFF_RegularDiet_Cortex_Inset_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/Iba1_Hoechst_TAgOFF_RegularDiet_Cortex_Inset_Coronal_20x_IF.webp"
+               alt="Iba1 Hoechst TAg-OFF regular diet cortex inset coronal 20x immunofluorescence" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Iba1 / Hoechst · TAg-OFF regular diet · cortex</span>
+        <span class="pair-caption-sub">coronal · 20x · IF · ZEISS Axio Imager M1</span>
+      </div>
+    </div>
+
+    <!-- TAg-OFF PLX Diet Cortex (CSF1R depletion) -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/Iba1_Hoechst_TAgOFF_PLXDiet_Cortex_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Full section</span>
+          <img src="gallery/Iba1_Hoechst_TAgOFF_PLXDiet_Cortex_Coronal_20x_IF.webp"
+               alt="Iba1 Hoechst TAg-OFF PLX5622 CSF1R microglial depletion cortex coronal 20x immunofluorescence" />
+        </a>
+        <a class="pair-panel" href="gallery/Iba1_Hoechst_TAgOFF_PLXDiet_Cortex_Inset_Coronal_20x_IF.webp" target="_blank">
+          <span class="pair-panel-label">Inset</span>
+          <img src="gallery/Iba1_Hoechst_TAgOFF_PLXDiet_Cortex_Inset_Coronal_20x_IF.webp"
+               alt="Iba1 Hoechst TAg-OFF PLX5622 CSF1R microglial depletion cortex inset coronal 20x immunofluorescence" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Iba1 / Hoechst · TAg-OFF PLX5622 diet · cortex</span>
+        <span class="pair-caption-sub">coronal · 20x · IF · ZEISS Axio Imager M1 · CSF1R-mediated microglial depletion</span>
+      </div>
+    </div>
+
+    <!-- SOLO TILES -->
+
+    <a class="gallery-solo" href="gallery/Iba1_Hoechst_5xFAD_Hippocampus_Coronal_40x_IF_Confocal.webp" target="_blank">
+      <img src="gallery/Iba1_Hoechst_5xFAD_Hippocampus_Coronal_40x_IF_Confocal.webp"
+           alt="Iba1 and Hoechst immunofluorescence 5xFAD hippocampus coronal 40x confocal" />
+      <div class="gallery-solo-caption">
+        <strong>Iba1 / Hoechst · 5xFAD hippocampus</strong>
+        coronal · 40x · IF confocal · Nikon A1R
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/Iba1_GFAP_Hoechst_TAgOFF_NCCR_Hippocampus_Coronal_20x_IF.webp" target="_blank">
+      <img src="gallery/Iba1_GFAP_Hoechst_TAgOFF_NCCR_Hippocampus_Coronal_20x_IF.webp"
+           alt="Iba1 GFAP Hoechst TAg-OFF NCCR hippocampus coronal 20x immunofluorescence" />
+      <div class="gallery-solo-caption">
+        <strong>Iba1 / GFAP / Hoechst · TAg-OFF NCCR hippocampus</strong>
+        coronal · 20x · IF · ZEISS Axio Imager M1
+      </div>
+    </a>
+
+    <!-- Golgi-Cox + Neurolucida -->
+    <div class="gallery-pair">
+      <div class="pair-panels">
+        <a class="pair-panel" href="gallery/GolgiCox_NLF_Cortex_Hom_20x_Confocal_Raw.webp" target="_blank">
+          <span class="pair-panel-label">Golgi-Cox confocal</span>
+          <img src="gallery/GolgiCox_NLF_Cortex_Hom_20x_Confocal_Raw.webp"
+               alt="Golgi-Cox stained neuron APP NL-G-F cortex homozygous 4-month male 20x confocal raw" />
+        </a>
+        <a class="pair-panel" href="gallery/Neurolucida_NLF_Cortex_Hom_20x_Reconstruction.webp" target="_blank">
+          <span class="pair-panel-label">Neurolucida</span>
+          <img src="gallery/Neurolucida_NLF_Cortex_Hom_20x_Reconstruction.webp"
+               alt="Neurolucida digital reconstruction APP NL-G-F cortex homozygous 4-month male 20x dendritic morphology" />
+        </a>
+      </div>
+      <div class="pair-caption">
+        <span class="pair-caption-main">Golgi-Cox stain · Neurolucida reconstruction · APP NL-G-F cortex</span>
+        <span class="pair-caption-sub">homozygous 4-month male · 20x · Nikon A1R confocal · MBF Neurolucida · dendritic spine morphology and arborization</span>
+      </div>
+    </div>
+
+    <a class="gallery-solo" href="gallery/DiI_5xFAD_Hippocampus_60x_Confocal.webp" target="_blank">
+      <img src="gallery/DiI_5xFAD_Hippocampus_60x_Confocal.webp"
+           alt="DiI lipophilic neuronal tracing 5xFAD hippocampus 60x confocal" />
+      <div class="gallery-solo-caption">
+        <strong>DiI neuronal tracing · 5xFAD hippocampus</strong>
+        60x · confocal · Nikon A1R · dendritic spine morphology
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/Iba1_CD45_Hoechst_NLF_Cortex_Coronal_63x_IF.webp" target="_blank">
+      <img src="gallery/Iba1_CD45_Hoechst_NLF_Cortex_Coronal_63x_IF.webp"
+           alt="Iba1 CD45 Hoechst NL-F cortex coronal 63x immunofluorescence" />
+      <div class="gallery-solo-caption">
+        <strong>Iba1 / CD45 / Hoechst · NL-F cortex</strong>
+        coronal · 63x · IF · Nikon A1R confocal
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/MSC_Proliferation_Day1_20x_Brightfield_DMSO.webp" target="_blank">
+      <img src="gallery/MSC_Proliferation_Day1_20x_Brightfield_DMSO.webp"
+           alt="Primary mesenchymal stem cell proliferation day 1 20x brightfield DMSO vehicle" />
+      <div class="gallery-solo-caption">
+        <strong>Primary MSC proliferation · day 1</strong>
+        20x · brightfield · DMSO vehicle
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/MSC_Proliferation_Day6_10x_Brightfield_DMSO.webp" target="_blank">
+      <img src="gallery/MSC_Proliferation_Day6_10x_Brightfield_DMSO.webp"
+           alt="Primary mesenchymal stem cell proliferation day 6 10x brightfield DMSO vehicle" />
+      <div class="gallery-solo-caption">
+        <strong>Primary MSC proliferation · day 6</strong>
+        10x · brightfield · DMSO vehicle
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/MSC_Scratch_Migration_Day1_10x_Brightfield.webp" target="_blank">
+      <img src="gallery/MSC_Scratch_Migration_Day1_10x_Brightfield.webp"
+           alt="Primary mesenchymal stem cell scratch migration assay day 1 10x brightfield" />
+      <div class="gallery-solo-caption">
+        <strong>Primary MSC scratch-migration assay · day 1</strong>
+        10x · brightfield
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/SV40T_TAgOFF_hTau_Cortex_Coronal_20x_DAB.webp" target="_blank">
+      <img src="gallery/SV40T_TAgOFF_hTau_Cortex_Coronal_20x_DAB.webp"
+           alt="SV40T TAg-OFF hTau cortex coronal 20x DAB" />
+      <div class="gallery-solo-caption">
+        <strong>SV40T · TAg-OFF / hTau cortex</strong>
+        coronal · 20x · DAB · ZEISS Axio Imager M1
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/CP13_TAgOFF_hTau_Cortex_Coronal_20x_DAB.webp" target="_blank">
+      <img src="gallery/CP13_TAgOFF_hTau_Cortex_Coronal_20x_DAB.webp"
+           alt="CP13 phospho-tau TAg-OFF hTau cortex coronal 20x DAB" />
+      <div class="gallery-solo-caption">
+        <strong>CP13 p-tau · TAg-OFF / hTau cortex</strong>
+        coronal · 20x · DAB · ZEISS Axio Imager M1
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/ROI_Contour_Hippocampus_Quantification.webp" target="_blank">
+      <img src="gallery/ROI_Contour_Hippocampus_Quantification.webp"
+           alt="Coronal ROI contour for stereological quantification hippocampus" />
+      <div class="gallery-solo-caption">
+        <strong>ROI contour · hippocampus</strong>
+        coronal · stereological quantification · MBF Stereo Investigator
+      </div>
+    </a>
+
+    <a class="gallery-solo" href="gallery/ROI_Horizontal_Hippocampal_Cortical_Quantification.webp" target="_blank">
+      <img src="gallery/ROI_Horizontal_Hippocampal_Cortical_Quantification.webp"
+           alt="Horizontal ROI hippocampal and cortical hemi-brain quantification" />
+      <div class="gallery-solo-caption">
+        <strong>ROI · hippocampal and cortical hemi-brain</strong>
+        horizontal · NearCYTE quantification · ZEISS Axio Scan.Z1
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <p class="section-label">Manuscripts</p>
+  <h2 class="section-title">Publications</h2>
+
+  <ul class="pub-list">
+    <li>
+      <span class="pub-title">
+        Multiple Systemic PAMP Administrations Increase Long-Lasting Tau Phosphorylation
+        and Neuroinflammation in PS19 Tauopathy Mice
+        <span class="pub-badge badge-prep">In Preparation</span>
+      </span>
+      <span class="pub-meta">
+        Keene J., Desjarlais T., Jackman B., Suresh S., Rossignol J., Gordon M., Dunbar G.L., &amp; Morgan D.
+      </span>
+    </li>
+    <li>
+      <span class="pub-title">
+        Application of the Daubert Standards to the Meyers Neuropsychological Battery
+        Using the Rohling Interpretive Method
+        <span class="pub-badge badge-published">Published</span>
+      </span>
+      <span class="pub-meta">
+        Rohling M.L., Meyers J.E., Williams G.R., Kalat S.S., Williams S.K., &amp; Keene J. (2015).
+        <em>Psychological Injury and Law, 8(3), 252–264.</em>
+      </span>
+      <a class="pub-link" href="rohling_2015_daubert_meyers_neuropsychological.pdf" target="_blank">Download PDF</a>
+    </li>
+  </ul>
+</section>
+
+<hr class="section-divider" />
+
+<!-- POSTERS -->
+<section id="posters">
+  <p class="section-label">Conference Presentations</p>
+  <h2 class="section-title">Posters</h2>
+  <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.4rem;">
+    Click any poster to open the full PDF.
+  </p>
+  <div class="poster-grid">
+
+    <a class="poster-item" href="posters/poster_2023_MISfN_Inflammatory_Stress_Tau_PS19.pdf" target="_blank">
+      <img src="posters/poster_2023_MISfN_Inflammatory_Stress_Tau_PS19.jpg"
+           alt="2023 MISfN poster: Inflammatory Stress Contributes to Tau Pathology in the PS19 Mouse Model" />
+      <div class="poster-caption">
+        <strong>Inflammatory Stress Contributes to Tau Pathology in the PS19 Mouse Model</strong>
+        <span class="poster-venue">MISfN · 2023</span>
+        <span class="poster-desc">PAMP-induced p-tau elevation and neuroinflammation in PS19 tauopathy mice; peripheral immune activation as a driver of persistent tau pathology.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2022_SCREE_Peripheral_Inflammation_AD_Hallmarks.pdf" target="_blank">
+      <img src="posters/poster_2022_SCREE_Peripheral_Inflammation_AD_Hallmarks.jpg"
+           alt="2022 SCREE poster: Peripheral Inflammation and Physiological Hallmarks of Alzheimer's Disease" />
+      <div class="poster-caption">
+        <strong>Peripheral Inflammation and Physiological Hallmarks of Alzheimer's Disease</strong>
+        <span class="poster-venue">SCREE · CMU · 2022</span>
+        <span class="poster-desc">Systemic PAMP administration and its relationship to tau pathology and glial reactivity in the PS19 model.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2019_SCREE_Inflammatory_Stress_Asymptomatic_AD.pdf" target="_blank">
+      <img src="posters/poster_2019_SCREE_Inflammatory_Stress_Asymptomatic_AD.jpg"
+           alt="2019 SCREE poster: Effects of Inflammatory Stress During the Asymptomatic Phase of Alzheimer's Disease" />
+      <div class="poster-caption">
+        <strong>Effects of Inflammatory Stress During the Asymptomatic Phase of Alzheimer's Disease</strong>
+        <span class="poster-venue">SCREE · CMU · 2019</span>
+        <span class="poster-desc">Prenatal and early-life inflammatory exposure in the 5xFAD model; amyloid burden and microglial density outcomes.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2018_SCREE_Prenatal_Stress_Microglia_Amyloid.pdf" target="_blank">
+      <img src="posters/poster_2018_SCREE_Prenatal_Stress_Microglia_Amyloid.jpg"
+           alt="2018 SCREE poster: Role of Prenatal Exposure to Inflammatory Stress on Microglia Density and Amyloidogenesis" />
+      <div class="poster-caption">
+        <strong>Role of Prenatal Exposure to Inflammatory Stress on Microglia Density and Amyloidogenesis</strong>
+        <span class="poster-venue">SCREE · CMU · 2018</span>
+        <span class="poster-desc">Maternal genotype-driven prenatal immune stress and its paradoxical reduction of hippocampal amyloid burden in 5xFAD offspring.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2018_MISfN_Inflammation_Sex_DendriticSpines_NLGF.pdf" target="_blank">
+      <img src="posters/poster_2018_MISfN_Inflammation_Sex_DendriticSpines_NLGF.jpg"
+           alt="2018 MISfN poster: Role of Inflammation and Sex on Dendritic Spines and Neuron Arborization in NL-G-F Mice" />
+      <div class="poster-caption">
+        <strong>Role of Inflammation and Sex on Dendritic Spines and Neuron Arborization in NL-G-F Mice</strong>
+        <span class="poster-venue">MISfN · 2018</span>
+        <span class="poster-desc">DiI neuronal tracing of dendritic spine density and arborization in APP NL-G-F knock-in mice; sex and inflammation as modulatory variables.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2017_MISfN_SCREE_Neuroinflammation_Sex_5xFAD.pdf" target="_blank">
+      <img src="posters/poster_2017_MISfN_SCREE_Neuroinflammation_Sex_5xFAD.jpg"
+           alt="2017 MISfN/SCREE poster: Neuroinflammation and Sex Differences in the 5xFAD Mouse Model of AD" />
+      <div class="poster-caption">
+        <strong>Neuroinflammation and Sex Differences in the 5xFAD Mouse Model of AD</strong>
+        <span class="poster-venue">MISfN / SCREE · 2017</span>
+        <span class="poster-desc">Sex-stratified microglial density and amyloid burden in 5xFAD mice; hippocampal and cortical comparisons.</span>
+      </div>
+    </a>
+
+    <a class="poster-item" href="posters/poster_2016_MISfN_WIN55_MSC.pdf" target="_blank">
+      <img src="posters/poster_2016_MISfN_WIN55_MSC.jpg"
+           alt="2016 MISfN poster: Cannabinoid Agonist WIN-55,212-2 Modulation of Mesenchymal Stem Cells" />
+      <div class="poster-caption">
+        <strong>Cannabinoid Agonist WIN-55,212-2 Modulation of Mesenchymal Stem Cells</strong>
+        <span class="poster-venue">MISfN · 2016</span>
+        <span class="poster-desc">Dose-response effects of WIN-55,212-2 on primary MSC proliferation and migration; biphasic response and FACS-validated cell identity.</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CV & DOCUMENTS -->
+<section id="cv">
+  <p class="section-label">Credentials &amp; Documents</p>
+  <h2 class="section-title">CV &amp; Documents</h2>
+
+  <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:0.8rem;">Downloads</h3>
+  <div class="doc-grid">
+    <div class="doc-card">
+      <h3>Academic CV</h3>
+      <p>Full curriculum vitae including complete publication list, presentations, teaching experience, and technical skills.</p>
+      <a href="joshua_keene_cv.pdf" target="_blank">Download CV (PDF)</a>
+    </div>
+  </div>
+
+  <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin:2rem 0 0.8rem;">Awards &amp; Grants</h3>
+  <ul class="award-list">
+    <li>
+      <span class="award-year">2023</span>
+      <div class="award-detail">
+        <strong>Field Neuroscience Chair Scholarship — $1,700</strong>
+        Central Michigan University, Mount Pleasant, MI
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2019</span>
+      <div class="award-detail">
+        <strong>Steinmetz Graduate Scholarship — $1,000</strong>
+        Central Michigan University, Mount Pleasant, MI
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2018</span>
+      <div class="award-detail">
+        <strong>Graduate Student Research and Creative Endeavors Grant — $800</strong>
+        Central Michigan University · "Effects of Inflammatory Stress During the Asymptomatic Phase of Alzheimer's Disease"
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2018</span>
+      <div class="award-detail">
+        <strong>Steinmetz Graduate Scholarship — $500</strong>
+        Central Michigan University, Mount Pleasant, MI
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2016</span>
+      <div class="award-detail">
+        <strong>Steinmetz Graduate Scholarship — $1,500</strong>
+        Central Michigan University, Mount Pleasant, MI
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2016</span>
+      <div class="award-detail">
+        <strong>Graduate Student Research and Creative Endeavors Grant — $800</strong>
+        Central Michigan University · "Ghrelin Induced Neurogenesis and Cell Survival in Aged Rats"
+      </div>
+    </li>
+    <li>
+      <span class="award-year">2015–16</span>
+      <div class="award-detail">
+        <strong>Masters Fellowship in Experimental Psychology</strong>
+        Central Michigan University, Mount Pleasant, MI
+      </div>
+    </li>
+  </ul>
+
+  <h3 style="font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin:2rem 0 0.8rem;">Teaching</h3>
+  <div class="teaching-grid">
+    <div class="teaching-card">
+      <h3>Stress (PSY 459)</h3>
+      <p>Instructor of record · CMU Department of Psychology · 2018</p>
+      <div class="doc-links">
+        <a href="teaching/2018_Syllabus_Stress_PSY459.pdf" target="_blank">Syllabus</a>
+        <a href="teaching/2018_SOS_Stress_PSY459.pdf" target="_blank">SOS Scores</a>
+      </div>
+    </div>
+    <div class="teaching-card">
+      <h3>Research Methods (PSY 285)</h3>
+      <p>Instructor of record · CMU Department of Psychology · 2018 · Online</p>
+      <div class="doc-links">
+        <a href="teaching/2018_Syllabus_ResearchMethods_PSY285.pdf" target="_blank">Syllabus</a>
+        <a href="teaching/2018_SOS_ResearchMethods_PSY285.pdf" target="_blank">SOS Scores</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider" />
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-label">Email</div>
+      <div class="contact-value"><a href="mailto:keenejosh22@gmail.com">keenejosh22@gmail.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Phone</div>
+      <div class="contact-value">(810) 287-5699</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">Location</div>
+      <div class="contact-value">Lansing, MI</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">GitHub</div>
+      <div class="contact-value"><a href="https://keenejosh.github.io">keenejosh.github.io</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Joshua Keene, PhD &nbsp;·&nbsp; Neuroscience &nbsp;·&nbsp; keenejosh.github.io</p>
+</footer>
+
+</body>
+</html>
