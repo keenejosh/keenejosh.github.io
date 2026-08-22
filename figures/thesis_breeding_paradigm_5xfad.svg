@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="1000" height="680" font-family="Arial, Helvetica, sans-serif">
+  <rect width="1000" height="680" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#000000"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="38" text-anchor="middle" font-size="23" font-weight="bold" fill="#000000">
+    Breeding Paradigm and Prenatal Inflammatory Exposure
+  </text>
+
+  <!-- ============ ROW 1: RECIPROCAL CROSSES ============ -->
+  <rect x="60" y="66" width="380" height="102" rx="3" fill="#dce6f1" stroke="#1f4e79" stroke-width="4"/>
+  <text x="250" y="96" text-anchor="middle" font-size="17.5" font-weight="bold" fill="#000000">
+    ♀ 5xFAD dam  ×  ♂ B6/SJL Non-Tg sire
+  </text>
+  <text x="250" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f4e79">
+    In utero exposure to maternal
+  </text>
+  <text x="250" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#1f4e79">
+    chronic inflammation
+  </text>
+
+  <rect x="560" y="66" width="380" height="102" rx="3" fill="#f0f0f0" stroke="#4d4d4d" stroke-width="4"/>
+  <text x="750" y="96" text-anchor="middle" font-size="17.5" font-weight="bold" fill="#000000">
+    ♀ B6/SJL Non-Tg dam  ×  ♂ 5xFAD sire
+  </text>
+  <text x="750" y="126" text-anchor="middle" font-size="15" font-weight="bold" fill="#4d4d4d">
+    Without 5xFAD-associated
+  </text>
+  <text x="750" y="148" text-anchor="middle" font-size="15" font-weight="bold" fill="#4d4d4d">
+    maternal inflammation
+  </text>
+
+  <!-- Arrows down -->
+  <line x1="250" y1="168" x2="250" y2="202" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="750" y1="168" x2="750" y2="202" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ ROW 2: PAIRED F1 BOXES ============ -->
+  <rect x="60" y="206" width="380" height="48" rx="3" fill="#ffffff" stroke="#1f4e79" stroke-width="3.5"/>
+  <text x="250" y="236" text-anchor="middle" font-size="17" font-weight="bold" fill="#000000">
+    F1 offspring
+  </text>
+
+  <rect x="560" y="206" width="380" height="48" rx="3" fill="#ffffff" stroke="#4d4d4d" stroke-width="3.5"/>
+  <text x="750" y="236" text-anchor="middle" font-size="17" font-weight="bold" fill="#000000">
+    F1 offspring
+  </text>
+
+  <!-- Converging connectors -->
+  <line x1="250" y1="254" x2="250" y2="270" stroke="#000000" stroke-width="2.5"/>
+  <line x1="750" y1="254" x2="750" y2="270" stroke="#000000" stroke-width="2.5"/>
+  <line x1="250" y1="270" x2="750" y2="270" stroke="#000000" stroke-width="2.5"/>
+  <line x1="500" y1="270" x2="500" y2="286" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Shared band -->
+  <rect x="170" y="290" width="660" height="56" rx="3" fill="#fafafa" stroke="#767676" stroke-width="1.5" stroke-dasharray="5,4"/>
+  <text x="500" y="313" text-anchor="middle" font-size="14" fill="#000000">
+    F1 offspring: expected ~50% 5xFAD / ~50% Non-Tg littermates  ·  balanced by sex
+  </text>
+  <text x="500" y="334" text-anchor="middle" font-size="14" fill="#000000">
+    Genotyped by PCR (APP)
+  </text>
+
+  <line x1="500" y1="346" x2="500" y2="374" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ TISSUE COLLECTION ============ -->
+  <rect x="270" y="378" width="460" height="76" rx="3" fill="#dce6f1" stroke="#1f4e79" stroke-width="4"/>
+  <text x="500" y="405" text-anchor="middle" font-size="17" font-weight="bold" fill="#000000">
+    Tissue collection at 4 months of age
+  </text>
+  <text x="500" y="427" text-anchor="middle" font-size="13.5" fill="#000000">
+    Transcardial perfusion  ·  30 µm coronal sections
+  </text>
+  <text x="500" y="445" text-anchor="middle" font-size="13.5" fill="#000000">
+    Iba1 / 6E10 / Hoechst immunofluorescence
+  </text>
+
+  <line x1="500" y1="454" x2="500" y2="480" stroke="#000000" stroke-width="2.5"/>
+  <line x1="270" y1="480" x2="730" y2="480" stroke="#000000" stroke-width="2.5"/>
+  <line x1="270" y1="480" x2="270" y2="508" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="730" y1="480" x2="730" y2="508" stroke="#000000" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ============ ANALYSIS ============ -->
+  <rect x="80" y="512" width="380" height="92" rx="3" fill="#ffffff" stroke="#1f4e79" stroke-width="3.5"/>
+  <text x="270" y="539" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#1f4e79">
+    Plaque area (6E10)
+  </text>
+  <text x="270" y="563" text-anchor="middle" font-size="13.5" fill="#000000">
+    Area Fraction Fractionator
+  </text>
+  <text x="270" y="584" text-anchor="middle" font-size="13.5" fill="#000000">
+    5xFAD offspring only
+  </text>
+
+  <rect x="540" y="512" width="380" height="92" rx="3" fill="#ffffff" stroke="#4d4d4d" stroke-width="3.5"/>
+  <text x="730" y="539" text-anchor="middle" font-size="16.5" font-weight="bold" fill="#000000">
+    Microglial density (Iba1)
+  </text>
+  <text x="730" y="563" text-anchor="middle" font-size="13.5" fill="#000000">
+    Optical Fractionator
+  </text>
+  <text x="730" y="584" text-anchor="middle" font-size="13.5" fill="#000000">
+    5xFAD and Non-Tg offspring
+  </text>
+
+  <!-- Footer -->
+  <text x="500" y="638" text-anchor="middle" font-size="13.5" fill="#000000">
+    Unbiased stereology (MBF Stereo Investigator) in hippocampus and cortex
+  </text>
+  <text x="500" y="658" text-anchor="middle" font-size="13.5" fill="#000000">
+    Maternal genotype, offspring genotype, and sex evaluated as experimental factors
+  </text>
+</svg>
