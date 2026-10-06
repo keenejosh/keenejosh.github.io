@@ -66,7 +66,7 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); text-decoration: none; }
-    .hero {
+     {
       min-height: 92vh;
       display: flex;
       align-items: center;
@@ -79,21 +79,21 @@
       position: relative;
       overflow: hidden;
     }
-    .hero::after {
+    ::after {
       content: '';
       position: absolute;
       inset: 0;
       background: radial-gradient(ellipse at 80% 50%, rgba(74,158,202,0.07) 0%, transparent 65%);
       pointer-events: none;
     }
-    .hero-inner {
+    -inner {
       max-width: 1000px;
       margin: 0 auto;
       display: flex;
       gap: 3.5rem;
       align-items: center;
     }
-    .hero-photo {
+    -photo {
       flex-shrink: 0;
       width: 130px;
       height: 130px;
@@ -106,13 +106,13 @@
       justify-content: center;
       margin-right: 15px;
     }
-    .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-    .hero-photo-placeholder {
+    -photo img { width: 100%; height: 100%; object-fit: cover; }
+    -photo-placeholder {
       font-size: 2.8rem;
       color: var(--text-muted);
       user-select: none;
     }
-    .hero-eyebrow {
+        .hero-eyebrow {
       font-size: 0.78rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -128,6 +128,7 @@
       line-height: 1.15;
       margin-bottom: 1rem;
       text-shadow: 1px 1px 3px rgba(0,0,0,0.95), -1px -1px 3px rgba(0,0,0,0.95);
+    }
     .hero-tagline {
       font-size: 1.05rem;
       color: var(--text);
